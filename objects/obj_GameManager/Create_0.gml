@@ -1,5 +1,9 @@
 /// @description Initialise les globales du jeu Marseille Tycoon
 
+// === PARAMETRES GRAPHIQUES ===
+display_reset(8, true); // Active l'Anti-Aliasing (MSAA x8) et le V-Sync
+gpu_set_texfilter(true); // Active le filtrage des textures pour lisser les sprites agrandis ou rÈduits
+
 // === ARGENT ===
 global.money          = 0;
 global.income_per_sec = 0;
