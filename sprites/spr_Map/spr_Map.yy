@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"spr_Map",
   "bboxMode":0,
-  "bbox_bottom":1023,
+  "bbox_bottom":2047,
   "bbox_left":0,
-  "bbox_right":1535,
+  "bbox_right":3071,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":true,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"4731e87e-95f2-409b-b629-6199d642897d","name":"4731e87e-95f2-409b-b629-6199d642897d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"db76f4e0-ef69-4e9e-90a9-69c494b62645","name":"db76f4e0-ef69-4e9e-90a9-69c494b62645","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":1024,
+  "height":2048,
   "HTile":true,
   "layers":[
-    {"$GMImageLayer":"","%Name":"b4e19beb-b71e-4032-9c1b-ab35ebfdd47d","blendMode":0,"displayName":"default","isLocked":false,"name":"b4e19beb-b71e-4032-9c1b-ab35ebfdd47d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"a2873e39-2b0c-4a1f-a222-ab01f3bd52e7","blendMode":0,"displayName":"default","isLocked":false,"name":"a2873e39-2b0c-4a1f-a222-ab01f3bd52e7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_Map",
   "nineSlice":{
@@ -42,7 +42,7 @@
     ],
     "top":0,
   },
-  "origin":0,
+  "origin":4,
   "parent":{
     "name":"Marseille - Tycoon RPG",
     "path":"Marseille - Tycoon RPG.yyp",
@@ -88,14 +88,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4731e87e-95f2-409b-b629-6199d642897d","path":"sprites/spr_Map/spr_Map.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d33f2ea9-9b56-477c-bbc0-0fe749f92392","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"db76f4e0-ef69-4e9e-90a9-69c494b62645","path":"sprites/spr_Map/spr_Map.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"04ba7d8d-b8ea-40d1-9986-df94f52cb8f2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
-    "yorigin":0,
+    "xorigin":1536,
+    "yorigin":1024,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
@@ -105,5 +105,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":1536,
+  "width":3072,
 }

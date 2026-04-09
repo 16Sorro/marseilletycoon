@@ -1,0 +1,1 @@
+room_goto(rm_options); // ou ouvrir un panneau options
