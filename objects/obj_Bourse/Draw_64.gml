@@ -151,17 +151,17 @@ else if (bourse_state == 1) {
     scr_draw_text_outline(_cx, 270, "────  CHOISIR TA MISE  ────", make_color_rgb(200, 200, 255));
 
     for (var i = 0; i < array_length(bet_options); i++) {
-        var _bx     = _cx - 720 + i * 480;
-        var _by     = 360;
+        var _bx     = _cx - 510 + i * 340;
+        var _by     = 380;
         var _is_sel = (i == sel_bet);
 
         // Carte
         draw_set_alpha(0.85);
         draw_set_color(_is_sel ? make_color_rgb(15,55,25) : make_color_rgb(12,18,40));
-        draw_rectangle(_bx - 170, _by - 35, _bx + 170, _by + 70, false);
+        draw_rectangle(_bx - 120, _by - 35, _bx + 120, _by + 70, false);
         draw_set_alpha(1);
         draw_set_color(_is_sel ? make_color_rgb(80,255,130) : make_color_rgb(40,55,110));
-        draw_rectangle(_bx - 170, _by - 35, _bx + 170, _by + 70, true);
+        draw_rectangle(_bx - 120, _by - 35, _bx + 120, _by + 70, true);
 
         var _bet_col = _is_sel ? make_color_rgb(80,255,130) : c_white;
         scr_draw_text_outline(_bx, _by, string(bet_options[i]) + " EUR", _bet_col);
@@ -170,7 +170,7 @@ else if (bourse_state == 1) {
         var _est = round(bet_options[i] * 0.25);
         draw_set_color(make_color_rgb(80, 220, 100));
         draw_set_halign(fa_center);
-        draw_text(_bx, _by + 48, "gain estimé : +" + string(_est) + " EUR");
+        draw_text(_bx, _by + 50, "~+" + string(_est) + " EUR");
         draw_set_halign(fa_left);
     }
 
