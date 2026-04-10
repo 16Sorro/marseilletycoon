@@ -3,7 +3,9 @@ interact_range = 64;
 near_business = noone;
 can_buy = false;
 base_scale = image_xscale; // Sauvegarde la taille d'origine
-
+base_sprite = sprite_index;
+is_emoting = false;
+global.emote_wheel_open = false;
 // ─── GESTION DE L'AFFICHAGE (Z-INDEX) ────────────────────────────────────
 // Le joueur est devant tous les PNJ et décors
 depth = -9000;

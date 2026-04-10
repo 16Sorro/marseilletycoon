@@ -9,8 +9,19 @@ if (keyboard_check(ord("S")) || keyboard_check(vk_down))  { _dy =  spd; }
 if (keyboard_check(ord("Q")) || keyboard_check(vk_left))  { _dx = -spd; }
 if (keyboard_check(ord("D")) || keyboard_check(vk_right)) { _dx =  spd; }
 
+// Annuler l'emote si on bouge
+if ((_dx != 0 || _dy != 0) && is_emoting) {
+    is_emoting = false;
+    sprite_index = base_sprite;
+}
+
 if (place_free(x + _dx, y)) { x += _dx; }
 if (place_free(x, y + _dy)) { y += _dy; }
+
+// ─── GESTION DE LA ROUE D'EMOTES (TOUCHE B) ──────────────────────────────
+if (keyboard_check_pressed(ord("B"))) {
+    global.emote_wheel_open = !global.emote_wheel_open;
+}
 
 // ─── ORIENTATION DU SPRITE (sens inversé, taille préservée) ──────────────
 if (_dx > 0) { image_xscale = -base_scale; } // Droite → retourné

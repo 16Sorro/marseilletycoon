@@ -113,3 +113,80 @@ if (global.is_paused) {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
+
+// ─── ROUE DES EMOTES (TOUCHE B) ──────────────────────────────────────────
+if (variable_global_exists("emote_wheel_open") && global.emote_wheel_open && !global.is_paused) {
+    var _gw = display_get_gui_width();
+    var _gh = display_get_gui_height();
+    var _cx = _gw / 2;
+    var _cy = _gh / 2;
+    var _radius = 200; // Plus grand pour la lisibilité
+    
+    // Assombrir légèrement l'écran
+    draw_set_alpha(0.5);
+    draw_set_color(c_black);
+    draw_rectangle(0, 0, _gw, _gh, false);
+    
+    // Fond de la roue
+    draw_set_alpha(0.7);
+    draw_circle(_cx, _cy, _radius, false);
+    
+    // Contour de la roue et séparateurs (8 parts)
+    draw_set_color(c_white);
+    draw_set_alpha(1);
+    draw_circle(_cx, _cy, _radius, true);
+    for (var i = 0; i < 8; i++) {
+        var _ang = i * 45 + 22.5;
+        var _lx = _cx + lengthdir_x(_radius, _ang);
+        var _ly = _cy + lengthdir_y(_radius, _ang);
+        draw_line(_cx, _cy, _lx, _ly);
+    }
+    
+    // Détection de la souris
+    var _mx = device_mouse_x_to_gui(0);
+    var _my = device_mouse_y_to_gui(0);
+    var _dist = point_distance(_cx, _cy, _mx, _my);
+    var _hovered_slot = -1;
+    
+    // Sélection active que si la souris n'est pas complètement au centre
+    if (_dist > 40) {
+        var _mouse_ang = point_direction(_cx, _cy, _mx, _my);
+        _hovered_slot = floor(((_mouse_ang + 22.5) % 360) / 45);
+    }
+    
+    // Liste des Emotes
+    var _emotes = ["Cigarette", "Vide", "Vide", "Vide", "Vide", "Vide", "Vide", "Vide"];
+    
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    
+    for (var i = 0; i < 8; i++) {
+        var _ang = i * 45;
+        // Position du texte à 70% de la roue
+        var _tx = _cx + lengthdir_x(_radius * 0.70, _ang);
+        var _ty = _cy + lengthdir_y(_radius * 0.70, _ang);
+        
+        var _col = (_hovered_slot == i) ? make_color_rgb(100, 255, 140) : c_white;
+        var _txt = _emotes[i];
+        
+        if (_hovered_slot == i) { _txt = "> " + _txt + " <"; }
+        
+        scr_draw_text_outline(_tx, _ty, _txt, _col);
+    }
+    
+    // Validation du clic gauche pour lancer l'emote
+    if (mouse_check_button_pressed(mb_left) && _hovered_slot != -1) {
+        if (_hovered_slot == 0) { // Slot 0 : Cigarette
+            if (instance_exists(obj_Player)) {
+                obj_Player.is_emoting = true;
+                obj_Player.sprite_index = asset_get_index("cigaretteanim"); 
+                // Note : On utilise asset_get_index pour s'assurer que GameMaker trouve le sprite même si il vient d'être créé localement
+            }
+        }
+        global.emote_wheel_open = false; // Ferme la roue
+    }
+    
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_color(c_white);
+}
