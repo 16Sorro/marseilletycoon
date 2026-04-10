@@ -57,7 +57,14 @@ switch(state) {
                 player_score = calculate_score(player_hand);
                 dealer_score = calculate_score(dealer_hand);
                 
-                state = 2; // Tour du joueur
+                // --- CHECK BLACKJACK IMMEDIAT ---
+                if (player_score == 21) {
+                    msg_result = "BLACKJACK !";
+                    global.money += current_bet * 2.5; // Gain bonus blackjack
+                    state = 4;
+                } else {
+                    state = 2; // Tour du joueur
+                }
             } else {
                 // Notification thune (optionnel, déjà géré dans la bourse)
             }
@@ -81,7 +88,11 @@ switch(state) {
             array_push(player_hand, new_card);
             player_score = calculate_score(player_hand);
             
-            if (player_score > 21) {
+            if (player_score == 21) {
+                msg_result = "BLACKJACK !";
+                global.money += current_bet * 2;
+                state = 4;
+            } else if (player_score > 21) {
                 msg_result = "TROP ! MAISON GAGNE";
                 state = 4;
             }
