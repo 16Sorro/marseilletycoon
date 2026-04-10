@@ -1,7 +1,37 @@
 /// @description Affiche le joueur et les bulles de dialogue
 
-// Dessiner le sprite d'origine du joueur
-draw_self();
+// Dessiner le sprite d'origine du joueur ou son emote
+if (is_emoting) {
+    var _spr = asset_get_index("cigaretteanim");
+    if (_spr != -1) {
+        var _bw = sprite_get_width(base_sprite);
+        var _bh = sprite_get_height(base_sprite);
+        var _sw = sprite_get_width(_spr);
+        var _sh = sprite_get_height(_spr);
+        
+        // Calcul du scale exact pour forcer `cigaretteanim` à la taille précise de `base_sprite`
+        var _adj_x = (_bw / _sw) * abs(base_scale);
+        var _adj_y = (_bh / _sh) * abs(base_scale);
+        
+        // Garde la direction gauche/droite
+        if (image_xscale < 0) { _adj_x = -_adj_x; }
+        
+        // Calcul du coin Haut-Gauche précis du joueur
+        var _left = x - sprite_get_xoffset(base_sprite) * image_xscale;
+        var _top = y - sprite_get_yoffset(base_sprite) * image_yscale;
+        
+        // Calcul du point de dessin (compense l'origin bizarre potentielle du nouveau sprite)
+        var _draw_x = _left + sprite_get_xoffset(_spr) * _adj_x;
+        var _draw_y = _top + sprite_get_yoffset(_spr) * _adj_y;
+        
+        // Faire avancer l'animation de l'emote
+        draw_sprite_ext(_spr, image_index, _draw_x, _draw_y, _adj_x, _adj_y, 0, c_white, 1);
+    } else {
+        draw_self();
+    }
+} else {
+    draw_self();
+}
 
 // ─── AFFICHAGE DES BULLES DE DIALOGUE AVEC LES FEMMES ────────────────────
 if (dialogue_state > 0 && instance_exists(target_femme)) {

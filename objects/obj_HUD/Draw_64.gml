@@ -179,8 +179,6 @@ if (variable_global_exists("emote_wheel_open") && global.emote_wheel_open && !gl
         if (_hovered_slot == 0) { // Slot 0 : Cigarette
             if (instance_exists(obj_Player)) {
                 obj_Player.is_emoting = true;
-                obj_Player.sprite_index = asset_get_index("cigaretteanim"); 
-                // Note : On utilise asset_get_index pour s'assurer que GameMaker trouve le sprite même si il vient d'être créé localement
             }
         }
         global.emote_wheel_open = false; // Ferme la roue
