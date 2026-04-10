@@ -1,7 +1,8 @@
 /// @description Déplacement + interaction avec les businesses
 
-// Bloque le joueur si la bourse est ouverte
+// Bloque le joueur si la bourse ou blackjack est ouvert
 if (variable_global_exists("bourse_active") && global.bourse_active) exit;
+if (variable_global_exists("blackjack_active") && global.blackjack_active) exit;
 
 // ─── MOUVEMENT (ZQSD + flèches) ───────────────────────────────────────────
 var _dx = 0;
