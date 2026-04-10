@@ -13,19 +13,35 @@ if (is_emoting) {
         var _adj_x = (_bw / _sw) * abs(base_scale);
         var _adj_y = (_bh / _sh) * abs(base_scale);
         
+        // Boost de taille (énormément en largeur, et légèrement en hauteur)
+        _adj_x *= 1.80; // +80% en largeur comme demandé
+        _adj_y *= 1.15; // +15% en hauteur
+        
+        // On récupère le centre logique absolu de la frame du joueur (indépendant de son point d'origine)
+        var _bb_left   = x - sprite_get_xoffset(base_sprite) * image_xscale;
+        var _bb_top    = y - sprite_get_yoffset(base_sprite) * image_yscale;
+        var _bb_width  = _bw * image_xscale;
+        var _bb_height = _bh * image_yscale;
+        
+        var _center_x = _bb_left + _bb_width / 2;
+        var _center_y = _bb_top + _bb_height / 2;
+        
         // Garde la direction gauche/droite
         if (image_xscale < 0) { _adj_x = -_adj_x; }
         
-        // Calcul du coin Haut-Gauche précis du joueur
-        var _left = x - sprite_get_xoffset(base_sprite) * image_xscale;
-        var _top = y - sprite_get_yoffset(base_sprite) * image_yscale;
+        // On recentre la Nouvelle boite plus grande autour du centre originel
+        var _new_w = _sw * _adj_x;
+        var _new_h = _sh * _adj_y;
+        
+        var _left = _center_x - _new_w / 2;
+        var _top = _center_y - _new_h / 2;
         
         // Calcul du point de dessin (compense l'origin bizarre potentielle du nouveau sprite)
         var _draw_x = _left + sprite_get_xoffset(_spr) * _adj_x;
         var _draw_y = _top + sprite_get_yoffset(_spr) * _adj_y;
         
-        // Faire avancer l'animation de l'emote
-        draw_sprite_ext(_spr, image_index, _draw_x, _draw_y, _adj_x, _adj_y, 0, c_white, 1);
+        // Faire avancer l'animation de l'emote manuellement à 3 IPS
+        draw_sprite_ext(_spr, emote_frame, _draw_x, _draw_y, _adj_x, _adj_y, 0, c_white, 1);
     } else {
         draw_self();
     }

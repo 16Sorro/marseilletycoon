@@ -9,10 +9,17 @@ if (keyboard_check(ord("S")) || keyboard_check(vk_down))  { _dy =  spd; }
 if (keyboard_check(ord("Q")) || keyboard_check(vk_left))  { _dx = -spd; }
 if (keyboard_check(ord("D")) || keyboard_check(vk_right)) { _dx =  spd; }
 
+// Frame Controller for custom 3 FPS
+if (is_emoting) {
+    emote_frame += 3 / game_get_speed(gamespeed_fps);
+} else {
+    emote_frame = 0;
+}
+
 // Annuler l'emote si on bouge
 if ((_dx != 0 || _dy != 0) && is_emoting) {
     is_emoting = false;
-    sprite_index = base_sprite;
+    emote_frame = 0;
 }
 
 if (place_free(x + _dx, y)) { x += _dx; }
