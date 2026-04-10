@@ -39,6 +39,8 @@
     {"id":{"name":"obj_Notification","path":"objects/obj_Notification/obj_Notification.yy",},},
     {"id":{"name":"obj_NPC_Passant","path":"objects/obj_NPC_Passant/obj_NPC_Passant.yy",},},
     {"id":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},},
+    {"id":{"name":"obj_Villa_Sortie","path":"objects/obj_Villa_Sortie/obj_Villa_Sortie.yy",},},
+    {"id":{"name":"obj_Villa","path":"objects/obj_Villa/obj_Villa.yy",},},
     {"id":{"name":"Object10_PnjLocation","path":"objects/Object10_PnjLocation/Object10_PnjLocation.yy",},},
     {"id":{"name":"Object11_PnjPolice1","path":"objects/Object11_PnjPolice1/Object11_PnjPolice1.yy",},},
     {"id":{"name":"Object12_PnjDJ","path":"objects/Object12_PnjDJ/Object12_PnjDJ.yy",},},
@@ -64,6 +66,7 @@
     {"id":{"name":"Object9_PnjCoffeeShop","path":"objects/Object9_PnjCoffeeShop/Object9_PnjCoffeeShop.yy",},},
     {"id":{"name":"rm_Marseille","path":"rooms/rm_Marseille/rm_Marseille.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"id":{"name":"rm_Villa_Interieur","path":"rooms/rm_Villa_Interieur/rm_Villa_Interieur.yy",},},
     {"id":{"name":"scr_draw_bubble","path":"scripts/scr_draw_bubble/scr_draw_bubble.yy",},},
     {"id":{"name":"scr_draw_text_outline","path":"scripts/scr_draw_text_outline/scr_draw_text_outline.yy",},},
     {"id":{"name":"Script3","path":"scripts/Script3/Script3.yy",},},
@@ -104,6 +107,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_Marseille","path":"rooms/rm_Marseille/rm_Marseille.yy",},},
+    {"roomId":{"name":"rm_Villa_Interieur","path":"rooms/rm_Villa_Interieur/rm_Villa_Interieur.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
