@@ -52,3 +52,48 @@ if (keyboard_check_pressed(ord("E")) && can_buy && near_business != noone) {
         }
     }
 }
+
+// ─── DIALOGUE AVEC LES FEMMES ──────────────────────────────────────────────
+if (dialogue_state > 0) {
+    dialogue_timer += delta_time / 1000000;
+    
+    if (dialogue_state == 1 && dialogue_timer >= 2.0) {
+        dialogue_state = 2;
+        dialogue_timer = 0;
+    } else if (dialogue_state == 2 && dialogue_timer >= 2.0 && global.money >= 50001) {
+        dialogue_state = 3;
+        dialogue_timer = 0;
+    } else if ((dialogue_state == 2 && global.money <= 50000 && dialogue_timer >= 3.0) || 
+               (dialogue_state == 3 && dialogue_timer >= 3.0)) {
+        dialogue_state = 0;
+        target_femme = noone;
+    }
+}
+
+if (keyboard_check_pressed(ord("E")) && dialogue_state == 0 && !can_buy) { // Si pas de business proche
+    var _f1 = instance_nearest(x, y, Object16_PnjFemme1);
+    var _f2 = instance_nearest(x, y, Object17_PnjFemme2);
+    var _target = noone;
+    var _dist = 9999;
+    
+    if (_f1 != noone) {
+        var d1 = point_distance(x, y, _f1.x, _f1.y);
+        // Range un peu plus grand pour parler aux passants
+        if (d1 < 120) { _target = _f1; _dist = d1; }
+    }
+    if (_f2 != noone) {
+        var d2 = point_distance(x, y, _f2.x, _f2.y);
+        if (d2 < 120 && d2 < _dist) { _target = _f2; }
+    }
+    
+    if (_target != noone) { 
+        dialogue_state = 1;
+        dialogue_timer = 0;
+        target_femme = _target;
+        
+        // Empêche la femme de s'enfuir trop loin pendant le dialogue
+        if (variable_instance_exists(_target, "direction_x")) {
+            _target.direction_x = sign(x - _target.x); // Elle se tourne vers le joueur
+        }
+    }
+}

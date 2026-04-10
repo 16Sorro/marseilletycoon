@@ -4,3 +4,17 @@ near_business = noone;
 can_buy = false;
 base_scale = image_xscale; // Sauvegarde la taille d'origine
 
+// ─── GESTION DE L'AFFICHAGE (Z-INDEX) ────────────────────────────────────
+// Le joueur est devant tous les PNJ et décors
+depth = -9000;
+
+// On s'assure que les murs (Object36_Mur) restent au-dessus du joueur
+with (Object36_Mur) {
+    depth = -10000;
+}
+
+// ─── GESTION DU DIALOGUE AVEC LES FEMMES ──────────────────────────────────
+dialogue_state = 0; // 0=aucun, 1="Wesh", 2="Saluuuuut" ou "Casse toi", 3="Insta"
+dialogue_timer = 0;
+target_femme = noone;
+
