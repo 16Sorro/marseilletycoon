@@ -1,5 +1,8 @@
 /// @description Déplacement + interaction avec les businesses
 
+// Bloque le joueur si la bourse est ouverte
+if (variable_global_exists("bourse_active") && global.bourse_active) exit;
+
 // ─── MOUVEMENT (ZQSD + flèches) ───────────────────────────────────────────
 var _dx = 0;
 var _dy = 0;

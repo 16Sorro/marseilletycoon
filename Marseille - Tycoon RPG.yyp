@@ -21,6 +21,7 @@
   },
   "name":"Marseille - Tycoon RPG",
   "resources":[
+    {"id":{"name":"obj_Bourse","path":"objects/obj_Bourse/obj_Bourse.yy",},},
     {"id":{"name":"obj_btn_jouer","path":"objects/obj_btn_jouer/obj_btn_jouer.yy",},},
     {"id":{"name":"obj_btn_options","path":"objects/obj_btn_options/obj_btn_options.yy",},},
     {"id":{"name":"obj_btn_quitter","path":"objects/obj_btn_quitter/obj_btn_quitter.yy",},},
