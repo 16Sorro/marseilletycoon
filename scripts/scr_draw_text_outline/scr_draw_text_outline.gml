@@ -101,7 +101,7 @@ function scr_options_draw() {
     
     // 2: Touches (Just infos)
     var _c2 = (global.opt_sel == 2) ? make_color_rgb(100,255,140) : make_color_rgb(200, 200, 200);
-    var _t2 = "DEPLACEMENT : Fleches ou ZQSD\nINTERACTION/ACHAT : E\nPAUSE/RETOUR : ECHAP\nARGENT(CHEAT) : M";
+    var _t2 = "DEPLACEMENT : Fleches ou ZQSD\nINTERACTION/ACHAT : E\nPAUSE/RETOUR : ECHAP\nROUE D'EMOTES : B\nARGENT(CHEAT) : M";
     scr_draw_text_outline(_gw/2, _gh/2 + 80, _t2, _c2);
     
     // 3: Retour
