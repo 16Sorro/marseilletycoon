@@ -35,18 +35,18 @@ function get_card_val(card) {
 }
 
 function calculate_score(hand) {
-    var score = 0;
+    var _score = 0;
     var aces = 0;
     for (var i = 0; i < array_length(hand); i++) {
         var v = get_card_val(hand[i]);
-        score += v;
+        _score += v;
         if (hand[i].val == 14) aces++;
     }
-    while (score > 21 && aces > 0) {
-        score -= 10;
+    while (_score > 21 && aces > 0) {
+        _score -= 10;
         aces--;
     }
-    return score;
+    return _score;
 }
 
 function get_random_card() {

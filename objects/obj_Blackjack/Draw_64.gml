@@ -4,7 +4,7 @@ if (!game_open) {
     if (player_near) {
         var _gw = display_get_gui_width();
         draw_set_halign(fa_center);
-        scr_draw_text_outline(_gw / 2, 80, "Blackjack  —  Appuie sur E", make_color_rgb(50, 255, 100));
+        scr_draw_text_outline(_gw / 2, 20, "Blackjack  —  Appuie sur E", make_color_rgb(255, 220, 50));
         draw_set_halign(fa_left);
     }
     exit;
