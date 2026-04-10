@@ -1,7 +1,7 @@
 /// @description Initialise le Blackjack
 
 game_open = false;
-interact_range = 150;
+interact_range = 350;
 player_near = false;
 
 // Etats : 0=Inactif, 1=Mise, 2=Joueur, 3=Croupier, 4=Resultat

@@ -11,8 +11,13 @@ if (_p != noone && point_distance(x, y, _p.x, _p.y) < interact_range) {
     player_near = true;
     if (keyboard_check_pressed(ord("E")) && !game_open) {
         game_open = true;
-        state = 1; // Direct à la mise
+        state = 1; // Mise
         sel_bet_idx = 0;
+        // Reset des scores au cas où
+        player_hand = [];
+        dealer_hand = [];
+        player_score = 0;
+        dealer_score = 0;
     }
 }
 
