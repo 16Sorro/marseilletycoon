@@ -18,3 +18,9 @@ dialogue_state = 0; // 0=aucun, 1="Wesh", 2="Saluuuuut" ou "Casse toi", 3="Insta
 dialogue_timer = 0;
 target_femme = noone;
 
+// ─── GESTION DU DIALOGUE AVEC LA POLICE ───────────────────────────────────
+police_dialogue_state = 0;
+police_dialogue_timer = 0;
+target_police = noone;
+police_cooldown = 0;
+

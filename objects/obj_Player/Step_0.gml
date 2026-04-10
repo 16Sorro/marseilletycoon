@@ -97,3 +97,69 @@ if (keyboard_check_pressed(ord("E")) && dialogue_state == 0 && !can_buy) { // Si
         }
     }
 }
+
+// ─── DIALOGUE ET COOLDOWN POLICE ──────────────────────────────────────────
+if (police_cooldown > 0) {
+    police_cooldown -= delta_time / 1000000;
+}
+
+if (police_dialogue_state > 0) {
+    police_dialogue_timer += delta_time / 1000000;
+    
+    // Etat 1 : Le flic demande l'identité (dure 3 secondes)
+    if (police_dialogue_state == 1 && police_dialogue_timer >= 3.0) {
+        police_dialogue_state = 2;
+        police_dialogue_timer = 0;
+    }
+    // Etat 2 : Moha répond (dure 3s)
+    else if (police_dialogue_state == 2 && police_dialogue_timer >= 3.0) {
+        police_dialogue_state = 3;
+        police_dialogue_timer = 0;
+    }
+    // Etat 3 : Flic dit ok bonne journée (dure 2.5s)
+    else if (police_dialogue_state == 3 && police_dialogue_timer >= 2.5) {
+        police_dialogue_state = 0;
+        if (instance_exists(target_police)) {
+            // Le flic repart
+            if (variable_instance_exists(target_police, "police_is_talking")) {
+                target_police.police_is_talking = false; 
+            }
+        }
+        target_police = noone;
+        police_cooldown = 60.0; // 1 minute de cooldown
+    }
+} else if (police_cooldown <= 0) {
+    // Si aucun dialogue avec la police n'est en cours et que le cooldown est fini, on cherche un policier proche
+    var _detect_range = 100;
+    var _t = noone;
+    var _dist = 9999;
+    
+    // On vérifie tous les objets de police
+    var _policiers = [Object11_PnjPolice1, Object13_PnjPolice2, Object14_PnjPolice3, Object15_PnjPolice4];
+    for (var i = 0; i < array_length(_policiers); i++) {
+        var _p = instance_nearest(x, y, _policiers[i]);
+        if (_p != noone) {
+            var d = point_distance(x, y, _p.x, _p.y);
+            if (d < _detect_range && d < _dist) {
+                _t = _p;
+                _dist = d;
+            }
+        }
+    }
+    
+    if (_t != noone) {
+        police_dialogue_state = 1;
+        police_dialogue_timer = 0;
+        target_police = _t;
+        
+        if (variable_instance_exists(_t, "police_is_talking")) {
+            _t.police_is_talking = true;
+        }
+        
+        // Tourne le flic vers le joueur
+        if (variable_instance_exists(_t, "base_scale")) {
+            if (x > _t.x) _t.image_xscale = -abs(_t.base_scale); // Regarde à droite
+            else _t.image_xscale = abs(_t.base_scale); // Regarde à gauche
+        }
+    }
+}
