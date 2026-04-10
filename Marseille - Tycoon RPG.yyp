@@ -66,6 +66,8 @@
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"scr_draw_bubble","path":"scripts/scr_draw_bubble/scr_draw_bubble.yy",},},
     {"id":{"name":"scr_draw_text_outline","path":"scripts/scr_draw_text_outline/scr_draw_text_outline.yy",},},
+    {"id":{"name":"Script3","path":"scripts/Script3/Script3.yy",},},
+    {"id":{"name":"cigaretteanim","path":"sprites/cigaretteanim/cigaretteanim.yy",},},
     {"id":{"name":"spr_CBDfacade","path":"sprites/spr_CBDfacade/spr_CBDfacade.yy",},},
     {"id":{"name":"spr_Clope","path":"sprites/spr_Clope/spr_Clope.yy",},},
     {"id":{"name":"spr_CoffeShop","path":"sprites/spr_CoffeShop/spr_CoffeShop.yy",},},
